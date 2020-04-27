@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="TypeScript基础简介 TypeScript 是一种由微软开发的自由和开源的编程语言。它是 JavaScript 的一个超集，TypeScript 在 JavaScript 的基础上添加了可选的静态类型和基于类的面向对象编程;其实TypeScript就是相当于JavaScript的增强版，但是最后运行时还要编译成JavaScript  demo初始化 用npm安装typescript  1n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript">
+<meta property="og:url" content="http:&#x2F;&#x2F;maozongtai.top&#x2F;TypeScript&#x2F;index.html">
+<meta property="og:site_name" content="江湖人称阿毛">
+<meta property="og:description" content="TypeScript基础简介 TypeScript 是一种由微软开发的自由和开源的编程语言。它是 JavaScript 的一个超集，TypeScript 在 JavaScript 的基础上添加了可选的静态类型和基于类的面向对象编程;其实TypeScript就是相当于JavaScript的增强版，但是最后运行时还要编译成JavaScript  demo初始化 用npm安装typescript  1n">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-27T15:15:57.418Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://maozongtai.top/TypeScript/"/>
+
+
+
+
+
+  <title>TypeScript | 江湖人称阿毛</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/zongtmao" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">江湖人称阿毛</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://maozongtai.top/TypeScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.mao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江湖人称阿毛">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TypeScript</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-27T23:21:00+08:00">
+                2020-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/TypeScript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/TypeScript/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="TypeScript基础"><a href="#TypeScript基础" class="headerlink" title="TypeScript基础"></a>TypeScript基础</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p>TypeScript 是一种由微软开发的自由和开源的编程语言。它是 JavaScript 的一个超集，TypeScript 在 JavaScript 的基础上添加了可选的静态类型和基于类的面向对象编程;其实TypeScript就是相当于JavaScript的增强版，但是最后运行时还要编译成JavaScript</p>
+</blockquote>
+<h2 id="demo初始化"><a href="#demo初始化" class="headerlink" title="demo初始化"></a>demo初始化</h2><blockquote>
+<p>用npm安装typescript</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install typescript -g //全局安装typescript  成功后使用tsc --version查看是否安装成功</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>初始化package.json文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y // 使用 -y 标记表示你能接受 package.json 文件的一堆默认值</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>生成tsconfig.json文件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc --init //tsconfig.json初始化命令</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>安装@types/node,使用npm install @types/node –dev-save进行安装。这个主要是解决模块的声明文件问题</p>
+</blockquote>
+<blockquote>
+<p>编写HelloWorld.ts文件，然后进行保存，代码如下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var test: string = &quot;Hello Word !!&quot;</span><br><span class="line">console.log(test)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在Vscode的任务菜单下，打开运行生成任务，然后选择tsc：构建-tsconfig.json，这时候就会生成一个helloWorld.js文件</p>
+</blockquote>
+<h2 id="TS变量类型"><a href="#TS变量类型" class="headerlink" title="TS变量类型"></a>TS变量类型</h2><p><strong>typescript中的数据类型：</strong></p>
+<ul>
+<li>Undefined；</li>
+<li>Number:数值类型；</li>
+<li>string : 字符串类型;</li>
+<li>Boolean: 布尔类型；</li>
+<li><strong>enum：枚举类型</strong>；</li>
+<li><strong>any : 任意类型，一个牛X的类型；</strong></li>
+<li><strong>void：空类型；</strong></li>
+<li>Array : 数组类型;</li>
+<li><strong>Tuple : 元祖类型；</strong></li>
+<li>Null ：空类型。</li>
+</ul>
+<blockquote>
+<p><strong>Undefined类型：</strong><br>声明一个变量，不给其赋值，使用该变量时，值为undefined，eg:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var age: number</span><br><span class="line">console.log(age) //undefined</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Number类型：</strong><br>在TypeScript中，所有的数字都是Number类型，这不分是整数还是小数。比如下面我们声明一个年龄是18岁，身高是178.5厘米</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var age:number = 18</span><br><span class="line">var stature:number = 178.5</span><br><span class="line">console.log(age)</span><br><span class="line">console.log(stature)</span><br></pre></td></tr></table></figure>
+<p><strong>在TypeScrip中有几种特殊的Number类型:</strong></p>
+<ul>
+<li>NaN：它是Not a Number 的简写，意思就是不是一个数值。如果一个计算结果或者函数的返回值本应该是数值，但是由于种种原因，他不是数字。出现这种状况不会报错，而是把它的结果看成了NaN。</li>
+<li>Infinity :正无穷大</li>
+<li>-Infinity：负无穷大。</li>
+</ul>
+<blockquote>
+<p><strong>enum枚举类型:</strong><br>这个世界有很多值是多个并且是固定的，比如：</p>
+</blockquote>
+<ul>
+<li>世界上人的类型：男人、女人、中性</li>
+<li>一年的季节：春、夏、秋、冬 ，有四个结果。<br>这时就是我们使用枚举的时机，eg:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enum REN&#123;nan, nv, mindle&#125;</span><br><span class="line">console.log(REN.mindle) //返回了2，这是索引index，跟数组很像</span><br></pre></td></tr></table></figure>
+如果我们想给这些枚举赋值，可以直接使用=,来进行赋值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enum REN &#123;</span><br><span class="line">    nan = &apos;男&apos;,</span><br><span class="line">    nv = &apos;女&apos;,</span><br><span class="line">    mindle = &apos;中性&apos; </span><br><span class="line">&#125;</span><br><span class="line">console.log(REN.mindle) //返回了 中性</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>any类型：</strong><br>有时候我们分不清是什么类型时，ts提供了any类型，这样变化类型，也不会报错, eg:<br><code>var test: any = 10</code></p>
+</blockquote>
+<h2 id="typescript的函数："><a href="#typescript的函数：" class="headerlink" title="typescript的函数："></a>typescript的函数：</h2><p>typescript函数需要注意的是：</p>
+<ul>
+<li>声明（定义）函数必须加 function 关键字；</li>
+<li>函数名与变量名一样，命名规则按照标识符规则；</li>
+<li>函数参数可有可无，多个参数之间用逗号隔开；</li>
+<li>每个参数参数由名字与类型组成，之间用分号隔开；</li>
+<li>函数的返回值可有可无，没有时，返回类型为 void；</li>
+<li>大括号中是函数体</li>
+</ul>
+<blockquote>
+<p><strong>TypeScript语言中的函数参数</strong></p>
+</blockquote>
+<p>TypeScript的函数参数是比较灵活的，它不像那些早起出现的传统语言那么死板。在TypeScript语言中，函数的形参分为：可选形参、默认形参、剩余参数形参等</p>
+<blockquote>
+<p><strong>1. 有可选参数的函数</strong></p>
+</blockquote>
+<p>可选参数，就是我们定义形参的时候，可以定义一个可传可不传的参数。这种参数，在定义函数的时候通过?标注。eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function TypeTest(age: number, state: string): string &#123; //此时state就是可选参数</span><br><span class="line">    let yy:string = &quot;&quot;</span><br><span class="line">    yy = &quot;找到了&quot;+age+&apos;岁&apos;</span><br><span class="line">    if(state != undefined) &#123;</span><br><span class="line">        yy = yy + state</span><br><span class="line">    &#125;</span><br><span class="line">    return yy + &quot;的小街基&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>2. 有默认参数的函数</strong></p>
+</blockquote>
+<p>有默认参数就更好理解了，就是我们不传递的时候，他会给我们一个默认值，而不是undefined了</p>
+<p><code>function TypeTest(age: number=18, state: string): string {//age就是默认参数</code></p>
+<blockquote>
+<p><strong>3.有剩余参数的函数</strong></p>
+</blockquote>
+<p>传递给函数的参数个数不确定。剩余参数就是形参是一个数组，传递几个实参过来都可以直接存在形参的数组中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function TypeTest(...xuqiu:string[]): string &#123;</span><br><span class="line">//调用</span><br><span class="line">var result:string  =  TypeTest(&apos;22岁&apos;,&apos;222&apos;,&apos;瓜子脸&apos;,&apos;梵蒂冈&apos;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="三种函数的定义方式"><a href="#三种函数的定义方式" class="headerlink" title="三种函数的定义方式"></a>三种函数的定义方式</h2><blockquote>
+<p><strong>1. 函数声明法</strong></p>
+</blockquote>
+<p>函数声明法创建函数是最常用的函数定义法。使用function关键字和函数名去定义一个函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function add(n1:number,n2:number):number&#123;</span><br><span class="line">    return n1+n2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>2. 函数表达式法</strong></p>
+</blockquote>
+<p>函数表达式法是将一个函数赋值给一个变量，这个变量名就是函数名。通过变量名就可以调用函数了。这种方式定义的函数，必须在定义之后，调用函数。下面例子中等号右边的函数没有函数名，称为匿名函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var add = function(n1:number,n2:number):number&#123;</span><br><span class="line">    return n1+n2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(add(1,4))</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>3. 箭头函数</strong></p>
+</blockquote>
+<p>箭头函数是 ES6 中新增的函数定义的新方式，我们的 TypeScript 语言是完全支持 ES6 语法的。箭头函数定义的函数一般都用于回调函数中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var add = (n1:number,n2:number):number=&gt;&#123;</span><br><span class="line">    return n1+n2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(add(1,4))</span><br></pre></td></tr></table></figure>
+
+<h2 id="引用类型-数组"><a href="#引用类型-数组" class="headerlink" title="引用类型-数组"></a>引用类型-数组</h2><p>TypeScript中的数据分为值类型和引用类型，前面用的都是值类型，现在虚拟一个人物的对象，代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let webMan = &#123;</span><br><span class="line">    name:&apos;菜前端&apos;,</span><br><span class="line">    website:&apos;jspang.com&apos;,</span><br><span class="line">    age:18,</span><br><span class="line">    saySometing:function()&#123;</span><br><span class="line">        console.log(&apos;为了前端技术&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(webMan.name)</span><br><span class="line">webMan.saySometing()</span><br></pre></td></tr></table></figure>
+<p>通过上面的案例，我们看到引用类型是一种复合的数据类型，引用类型中封装了很多对属性，每一对属性都有属性名和属性值</p>
+<p>在TypeScript中也给我们提供了一些引用类型，例如：Array（数组）、String（字符串）、Date（日期对象）、RegExp（正则表达式）等</p>
+<blockquote>
+<p><strong>初始化数组的两种方式</strong></p>
+</blockquote>
+<p>声明数组跟声明一个普通变量是一样的，都是通过 var let 关键字实现的，只不过数组的类型说明符比较复杂而已</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arr1:number[] //声明一个数值类型的数组</span><br><span class="line">let arr2:Array&lt;string&gt; // 声明一个字符串类型的数组</span><br></pre></td></tr></table></figure>
+
+<p><strong>给数组赋值</strong></p>
+<p>数组是存储大量数据的集合，声明数组之后，需要给数组存储数据。这时候有两种方法：</p>
+<ul>
+<li>字面量赋值法：直接使用“[ ]”对数组进行赋值，例如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//定义一个空数组，数组容量为0</span><br><span class="line">let arr1:number[] = [] </span><br><span class="line">//定义一个数组时，直接给数组赋值</span><br><span class="line">let arr2:number[] = [1,2,3,4,5]</span><br><span class="line">//定义数组 的同事给数组赋值</span><br><span class="line">let arr4:Array&lt;boolean&gt; = [ true,false,false]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>需要注意的是，在TypeScript中指定数据类型的数组只能存储同一类型的数组元素<br>let arr5:number[] = [1,2,true] //报错</p>
+</blockquote>
+</li>
+<li>构造函数赋值法，例如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr1:number[] = new Array()</span><br><span class="line">let ara2:number[] = new Array(1,2,3,4,5)</span><br><span class="line">let arr4:Array&lt;boolean&gt; = new Array(true,false,false)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>元数组，一种特特的数组，(开发中很少用)</strong></p>
+<p>元祖是一种特殊的数组，元祖类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同。比如，你可以定义一对值分别为string和number类型的元祖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//声明一个元祖类型</span><br><span class="line">let x : [string,number]</span><br><span class="line">//正确的初始化</span><br><span class="line">x = [&apos;hello&apos;,10] //顺序不能颠倒</span><br></pre></td></tr></table></figure>
+
+<h2 id="引用类型-字符串"><a href="#引用类型-字符串" class="headerlink" title="引用类型-字符串"></a>引用类型-字符串</h2><blockquote>
+<p><strong>字符串的两种类型</strong></p>
+</blockquote>
+<ul>
+<li>基本类型字符串：由单引号或者双引号括起来的一串字符串。</li>
+<li>引用类型字符串：用new 实例化的 String类型。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let web1:string = &apos;菜前端&apos;</span><br><span class="line">let web2:String = new String(&quot;maozongtai.com&quot;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>常用方法</p>
+</blockquote>
+</li>
+<li>str.indexOf(subStr) 返回索引，没有找到返回-1</li>
+<li>lastIndexOf() 从字符串尾部开始查找字符串的位置</li>
+<li>str.substring(startIndex,[endIndex]) 截取字符串</li>
+<li>str.replace(subStr,newstr) 替换字符串</li>
+</ul>
+<h2 id="引用类型-日期对象"><a href="#引用类型-日期对象" class="headerlink" title="引用类型-日期对象"></a>引用类型-日期对象</h2><blockquote>
+<p>let d:Date = new Date()//参数可以不传，可以是整数(1000)，可以是字符串(‘2018/09/06 05:30:00’)</p>
+</blockquote>
+<h2 id="引用类型-正则表达式"><a href="#引用类型-正则表达式" class="headerlink" title="引用类型-正则表达式"></a>引用类型-正则表达式</h2><ul>
+<li>构造函数法</li>
+</ul>
+<p><code>let reg2:RegExp = new RegExp(&quot;test&quot;,&#39;gi&#39;)</code></p>
+<ul>
+<li>字面量法</li>
+</ul>
+<p><code>let reg2:RegExp = /test/gi</code></p>
+<blockquote>
+<p>RegExp中常用的方法</p>
+</blockquote>
+<ul>
+<li><p><strong>test(string)</strong>: 在字符串中查找是否存在指定的正则表达式并返回布尔值，如果存在则返回 true，不存在则返回 false。</p>
+</li>
+<li><p><strong>exec(string)</strong>: 用于在字符串中查找指定正则表达式，如果 exec() 方法执行成功，则返回包含该查找字符串的相关信息数组。如果执行失败，则返回 null</p>
+</li>
+</ul>
+<h2 id="面向对象编程-类的声明跟使用"><a href="#面向对象编程-类的声明跟使用" class="headerlink" title="面向对象编程-类的声明跟使用"></a>面向对象编程-类的声明跟使用</h2><p>TypeScript提供了强大的类的支持，只有会了类才可以new出对象来，下面创建一个Personer的类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Personer &#123;</span><br><span class="line">    name: string;</span><br><span class="line">    age: string; //跟js不同，ts这里是;</span><br><span class="line">    constructor(name:string, age:string) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;;</span><br><span class="line">    say() &#123;</span><br><span class="line">        console.log(&quot;hello !&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let hanmeimei:Personer = new Personer(&quot;韩梅梅&quot;, &quot;18&quot;);</span><br><span class="line">console.log(hanmeimei);</span><br><span class="line">hanmeimei.say();</span><br></pre></td></tr></table></figure>
+<p>我们先用class关键字声明了一个类，并在里边声明了name和age属性。constructor为构造函数。构造函数的主要作用是给类中封装的属性进行赋值</p>
+<h2 id="面向对象编程-修饰符"><a href="#面向对象编程-修饰符" class="headerlink" title="面向对象编程-修饰符"></a>面向对象编程-修饰符</h2><p><strong>访问修饰符</strong></p>
+<p>访问修饰符分为：public、protected、private</p>
+<ul>
+<li>public:公有修饰符，可以在类内或者类外使用public修饰的属性或者行为，默认修饰符</li>
+<li>protected:受保护的修饰符，可以本类和子类中使用protected修饰的属性和行为</li>
+<li>private : 私有修饰符，只可以在类内使用private修饰的属性和行为。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Personer &#123;</span><br><span class="line">    public sex:string;</span><br><span class="line">    protected name:string;</span><br><span class="line">    private age:number;</span><br><span class="line">    constructor(sex:string, name:string, age:number) &#123;</span><br><span class="line">        this.sex = sex;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    public sayHello() &#123;</span><br><span class="line">        console.log(&quot;hello&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    protected sayLove() &#123;</span><br><span class="line">        console.log(&quot;I love you&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let hanmeimei:Personer = new Personer(&quot;女&quot;, &quot;韩梅梅&quot;, 18)</span><br><span class="line">console.log(hanmeimei.sex);</span><br><span class="line">console.log(hanmeimei.name); //报错</span><br><span class="line">console.log(hanmeimei.age); //报错</span><br><span class="line">hanmeimei.sayHello();</span><br><span class="line">hanmeimei.sayLove() //报错</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>只读修饰符</strong></p>
+<p>使用readonly修饰符将属性设置为只读，只读属性必须在生命时或者构造函数里被初始化（注意）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Man &#123;</span><br><span class="line">    public readonly sex:string = &apos;男&apos;;</span><br><span class="line">&#125;</span><br><span class="line">let man:Man = new Man()</span><br><span class="line">man.sex = &quot;女&quot; //报错</span><br></pre></td></tr></table></figure>
+
+<h2 id="面向对象编程-继承和重写"><a href="#面向对象编程-继承和重写" class="headerlink" title="面向对象编程-继承和重写"></a>面向对象编程-继承和重写</h2><p><strong>类的继承</strong></p>
+<p>继承：允许我们创建一个类（子类），从已有的类（父类）上继承所有的属性和方法，子类可以新建父类中没有的属性和方法，我们先创建一个父类:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Parent&#123;</span><br><span class="line">    public name:string;</span><br><span class="line">    public age:string;</span><br><span class="line">    public skill:string;</span><br><span class="line">    constructor(name:string, age:string, skill:string) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">        this.skill = skill;</span><br><span class="line">    &#125;</span><br><span class="line">    public aihao() &#123;</span><br><span class="line">        console.log(&quot;打球&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let myParent:Parent = new Parent(&quot;JackeyLove&quot;, &quot;18&quot;, &quot;web&quot;)</span><br><span class="line">myParent.aihao();</span><br></pre></td></tr></table></figure>
+<p>再创建子类，要求包含父类的信息并有属于自己的技能，用到关键词 extends 如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Son extends Parent&#123;</span><br><span class="line">    public mySkill:string = &quot;读书&quot;;</span><br><span class="line">    public getMenoy() &#123;</span><br><span class="line">        console.log(&quot;一天赚一亿&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let mySon:Son = new Son(&quot;son&quot;, &quot;3&quot;, &quot;吃&quot;); //继承父类的属性</span><br><span class="line">mySon.aihao();</span><br><span class="line">mySon.getMenoy()</span><br></pre></td></tr></table></figure>
+
+<p><strong>类的重写</strong>: 重写就是在子类中重写父类的方法,如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Son extends Parent&#123;</span><br><span class="line">    public mySkill:string = &quot;读书&quot;;</span><br><span class="line">    public aihao() &#123; //重写aihao方法</span><br><span class="line">        super.aihao() //用super调用父类的方法</span><br><span class="line">        console.log(&quot;看定影&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public getMenoy() &#123;</span><br><span class="line">        console.log(&quot;一天赚一亿&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="面向对象编程-接口"><a href="#面向对象编程-接口" class="headerlink" title="面向对象编程-接口"></a>面向对象编程-接口</h2><p>定义接口的关键字是<strong>interface</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">interface Personer &#123;</span><br><span class="line">    sex:string</span><br><span class="line">    interest:string</span><br><span class="line">    maiBaoBao?:Boolean</span><br><span class="line">&#125;</span><br><span class="line">let jackson:Personer =&#123; sex:&apos;男&apos;,interest:&apos;看书、作家务&apos;,maiBaoBao:true&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="面向对象-命名空间"><a href="#面向对象-命名空间" class="headerlink" title="面向对象-命名空间"></a>面向对象-命名空间</h2><p>命名空间，又称内部模块，被用于组织有些具有内在联系的特性和对象。我们来看一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">namespace shuaiDe&#123;</span><br><span class="line">    export class Dehua&#123;</span><br><span class="line">        public name:string = &apos;刘德华&apos;;</span><br><span class="line">        say() &#123;</span><br><span class="line">            console.log(&quot;我是刘德华&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">namespace bajie&#123;</span><br><span class="line">    export class Dehua&#123;</span><br><span class="line">        public name:string = &apos;马德华&apos;;</span><br><span class="line">        say() &#123;</span><br><span class="line">            console.log(&quot;我是二师兄&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let dehua1:shuaiDe.Dehua = new shuaiDe.Dehua();</span><br><span class="line">dehua1.say()</span><br></pre></td></tr></table></figure>
+<p>这样就能避免多人开发时造成的命名污染</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/cmder%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/" rel="next" title="cmder环境变量配置">
+                <i class="fa fa-chevron-left"></i> cmder环境变量配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Mr.mao" />
+            
+              <p class="site-author-name" itemprop="name">Mr.mao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives%7C%7Carchive">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/archives/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zongtmao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://maozongtai@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://maozongtai.top/" title="博客" target="_blank">博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TypeScript基础"><span class="nav-number">1.</span> <span class="nav-text">TypeScript基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#demo初始化"><span class="nav-number">1.2.</span> <span class="nav-text">demo初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TS变量类型"><span class="nav-number">1.3.</span> <span class="nav-text">TS变量类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typescript的函数："><span class="nav-number">1.4.</span> <span class="nav-text">typescript的函数：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三种函数的定义方式"><span class="nav-number">1.5.</span> <span class="nav-text">三种函数的定义方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用类型-数组"><span class="nav-number">1.6.</span> <span class="nav-text">引用类型-数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用类型-字符串"><span class="nav-number">1.7.</span> <span class="nav-text">引用类型-字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用类型-日期对象"><span class="nav-number">1.8.</span> <span class="nav-text">引用类型-日期对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用类型-正则表达式"><span class="nav-number">1.9.</span> <span class="nav-text">引用类型-正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象编程-类的声明跟使用"><span class="nav-number">1.10.</span> <span class="nav-text">面向对象编程-类的声明跟使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象编程-修饰符"><span class="nav-number">1.11.</span> <span class="nav-text">面向对象编程-修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象编程-继承和重写"><span class="nav-number">1.12.</span> <span class="nav-text">面向对象编程-继承和重写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象编程-接口"><span class="nav-number">1.13.</span> <span class="nav-text">面向对象编程-接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象-命名空间"><span class="nav-number">1.14.</span> <span class="nav-text">面向对象-命名空间</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.mao</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Jd7on419CRjrX0qumiQzBctw-gzGzoHsz',
+        appKey: 'PfkqkKYTwm2zUcuKXhowgdVR',
+        placeholder: 'Enter your opinion!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
