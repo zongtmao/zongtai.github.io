@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="分享,总结,hexo," />
+  <meta name="keywords" content="vue,分享,总结," />
 
 
 
@@ -86,29 +86,16 @@
 
 
 
-<meta name="description" content="hexo + Github 博客搭建#前言#17年开始做前端的时候搭建了自己的第一个git博客，当时只是简单的玩了下，域名也没有申请备案，这也算为自己的懒惰找个借口吧，再没有花精力弄过，现在域名备案成功！想从新搭建下博客，网上也有一堆详细教程。我在此稍稍总结一下具体的搭建步骤，并且修改博客源码的一些坑和经验分享给大家，希望有所帮助！！废话不多说，开始正题~首先是搭建博客用到的框架，我选用基于nod">
-<meta name="keywords" content="分享,总结,hexo">
+<meta name="description" content="前言 目前项目中使用的是element-ui组件库，基本上能够满足日常的需求开发，但是在某些复杂交互的实现上，就需要自己重新封装（造轮子），如果时间允许可以根据项目开发一套我们自己的组件库，当然这个过程能够学到很多的知识点，下面以vue2版本和vue3版本为例，简单梳理下开发组件库的流程。   环境搭建 使用vue-cli脚手架搭建，根据vue不同版本安装即可，这里不多做介绍  vue2版本 ma">
+<meta name="keywords" content="vue,分享,总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo + git博客搭建">
-<meta property="og:url" content="http:&#x2F;&#x2F;maozongtai.top&#x2F;hexo-git%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA&#x2F;index.html">
+<meta property="og:title" content="vue组件库开发流程">
+<meta property="og:url" content="http:&#x2F;&#x2F;maozongtai.top&#x2F;vue%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B&#x2F;index.html">
 <meta property="og:site_name" content="江湖人称阿毛">
-<meta property="og:description" content="hexo + Github 博客搭建#前言#17年开始做前端的时候搭建了自己的第一个git博客，当时只是简单的玩了下，域名也没有申请备案，这也算为自己的懒惰找个借口吧，再没有花精力弄过，现在域名备案成功！想从新搭建下博客，网上也有一堆详细教程。我在此稍稍总结一下具体的搭建步骤，并且修改博客源码的一些坑和经验分享给大家，希望有所帮助！！废话不多说，开始正题~首先是搭建博客用到的框架，我选用基于nod">
+<meta property="og:description" content="前言 目前项目中使用的是element-ui组件库，基本上能够满足日常的需求开发，但是在某些复杂交互的实现上，就需要自己重新封装（造轮子），如果时间允许可以根据项目开发一套我们自己的组件库，当然这个过程能够学到很多的知识点，下面以vue2版本和vue3版本为例，简单梳理下开发组件库的流程。   环境搭建 使用vue-cli脚手架搭建，根据vue不同版本安装即可，这里不多做介绍  vue2版本 ma">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;zongtmao&#x2F;markdownPicture&#x2F;master&#x2F;images&#x2F;new_project.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;zongtmao&#x2F;markdownPicture&#x2F;master&#x2F;images&#x2F;project_mess.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;zongtmao&#x2F;markdownPicture&#x2F;master&#x2F;images&#x2F;git_pages.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;zongtmao&#x2F;markdownPicture&#x2F;master&#x2F;images&#x2F;hexo_show.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;zongtmao&#x2F;markdownPicture&#x2F;master&#x2F;images&#x2F;mulu.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;zongtmao&#x2F;markdownPicture&#x2F;master&#x2F;images&#x2F;xiaoguo.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;zongtmao&#x2F;markdownPicture&#x2F;master&#x2F;images&#x2F;git_ssh.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;zongtmao&#x2F;markdownPicture&#x2F;master&#x2F;images&#x2F;yuming.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;zongtmao&#x2F;markdownPicture&#x2F;master&#x2F;images&#x2F;success.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;zongtmao&#x2F;markdownPicture&#x2F;master&#x2F;images&#x2F;theme_next.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;zongtmao&#x2F;markdownPicture&#x2F;master&#x2F;images&#x2F;scheme.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;zongtmao&#x2F;markdownPicture&#x2F;master&#x2F;images&#x2F;my_blog.png">
-<meta property="og:updated_time" content="2021-04-17T17:16:51.141Z">
+<meta property="og:updated_time" content="2021-04-17T17:29:10.062Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;zongtmao&#x2F;markdownPicture&#x2F;master&#x2F;images&#x2F;new_project.png">
 
 
 
@@ -138,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://maozongtai.top/hexo-git博客搭建/"/>
+  <link rel="canonical" href="http://maozongtai.top/vue组件库开发流程/"/>
 
 
 
 
 
-  <title>hexo + git博客搭建 | 江湖人称阿毛</title>
+  <title>vue组件库开发流程 | 江湖人称阿毛</title>
   
 
 
@@ -306,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://maozongtai.top/hexo-git%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
+    <link itemprop="mainEntityOfPage" href="http://maozongtai.top/vue%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.mao">
@@ -323,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo + git博客搭建</h1>
+          <h1 class="post-title" itemprop="name headline">vue组件库开发流程</h1>
         
 
         <div class="post-meta">
@@ -335,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-26T19:24:19+08:00">
-                2019-10-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-18T00:00:00+08:00">
+                2021-04-18
               </time>
             
 
@@ -376,8 +363,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/hexo-git%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/hexo-git%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="commentCount"></span>
+                <a href="/vue%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/vue%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -399,7 +386,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.4k
+                  1.5k
                 </span>
               
 
@@ -415,7 +402,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  7
                 </span>
               
             </div>
@@ -436,43 +423,82 @@
       
 
       
-        <h1 id="hexo-Github-博客搭建"><a href="#hexo-Github-博客搭建" class="headerlink" title="hexo + Github 博客搭建"></a>hexo + Github 博客搭建</h1><h2 id="前言"><a href="#前言" class="headerlink" title="#前言#"></a>#前言#</h2><pre><code>17年开始做前端的时候搭建了自己的第一个git博客，当时只是简单的玩了下，域名也没有申请备案，这也算为自己的懒惰找个借口吧，再没有花精力弄过，现在域名备案成功！想从新搭建下博客，网上也有一堆详细教程。我在此稍稍总结一下具体的搭建步骤，并且修改博客源码的一些坑和经验分享给大家，希望有所帮助！！废话不多说，开始正题~</code></pre><p>首先是搭建博客用到的框架，我选用基于node.js 的Hexo，可以直接用Markdown语法撰写博客，写好部署到git上就行</p>
-<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><pre><code>node.js可以直接去官网down，推荐使用当前稳定版本，以前安装过的，记着更新下版本，版本过低，hexo安装后执行命令可能会报错（坑已踩过），下载好以后机械式安装就好，这里不做过多介绍，最后通过
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure></code></pre><p>查看下node版本信息，如果有版本信息说明安装成功了</p>
-<h2 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h2><p>为了让我们本地开发的博客能在外网上访问，我们借助GitHub，安装教程网上很多，自己搜下，安装完成后在命令提示符中输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -v</span><br></pre></td></tr></table></figure>
-<p>验证是否安装成功；安装成功后自己按照教程注册一个属于你自己的GitHub账号（作为程序猿，git应该是要有的哦~）<br>然后新增一个项目：如下图<br><img src="https://raw.githubusercontent.com/zongtmao/markdownPicture/master/images/new_project.png" alt="新增工程"><br>然后如下图所示，输入自己的项目名字，后面一定要加.github.io后缀，README初始化最好也要勾上<br><img src="https://raw.githubusercontent.com/zongtmao/markdownPicture/master/images/project_mess.png" alt="工程信息"></p>
-<p>项目就建成了，点击Settings，向下拉到最后有个GitHub Pages，点击Choose a theme选择一个主题。然后等一会儿，再回到GitHub Pages，会变成下面这样：<br><img src="https://raw.githubusercontent.com/zongtmao/markdownPicture/master/images/git_pages.png" alt="gitHub Pages"></p>
-<p>点击标红的链接，就可以看到自己的网页信息啦，效果图如下：<br><img src="https://raw.githubusercontent.com/zongtmao/markdownPicture/master/images/hexo_show.png" alt="博客网上效果"></p>
-<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p>在本地电脑硬盘在新增一个文件夹用来存放博客源码文件，如我的在 F:\blog_manage\myBlog目录下，点击鼠标右键，点击：Git Bash Here 打开git控制窗口，也可使用window自带的控制台</p>
-<p>在myBlog根目录下，输入npm install hexo-cli -g 安装Hexo ,如果有提示，忽略，安装完成后输入hexo -v 验证是否安装成功！</p>
-<p>然后就要初始化我们的网站，输入hexo init初始化文件夹，接着输入npm install安装依赖，这样本地的网站配置也弄好啦，hexo g生成静态网页，然后输入hexo s打开本地服务器，然后浏览器打开<a href="http://localhost:4000/，就可以看到新建的本地博客了，看到下图说明本地博客OK了：" target="_blank" rel="noopener">http://localhost:4000/，就可以看到新建的本地博客了，看到下图说明本地博客OK了：</a><br><img src="https://raw.githubusercontent.com/zongtmao/markdownPicture/master/images/mulu.png" alt="目录"><br><img src="https://raw.githubusercontent.com/zongtmao/markdownPicture/master/images/xiaoguo.png" alt="hexo本地效果"></p>
-<p>按ctrl+c关闭本地服务器。</p>
-<blockquote>
-<p>备注：如果4000端口被占用，个人认为最简单方法：可以通过node_modules\hexo-server\index.js文件，可以修改默认的port值，重新hexo s 启动项目</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>目前项目中使用的是element-ui组件库，基本上能够满足日常的需求开发，但是在某些复杂交互的实现上，就需要自己重新封装（造轮子），如果时间允许可以根据项目开发一套我们自己的组件库，当然这个过程能够学到很多的知识点，下面以vue2版本和vue3版本为例，简单梳理下开发组件库的流程。</p>
 </blockquote>
-<h2 id="Git-ssh配置"><a href="#Git-ssh配置" class="headerlink" title="Git ssh配置"></a>Git ssh配置</h2><p>首先设置好git全局配置name和email</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot;</span><br><span class="line">git config --global user.email &quot;xxx@qq.com&quot;</span><br></pre></td></tr></table></figure>
-<p>然后生成ssh key:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;xxx@qq.com&quot;</span><br></pre></td></tr></table></figure>
-<p>控制台中输入cat ~/.ssh/id_rsa.pub将输出的内容复制到框中，点击确定保存<br>最后输入ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a> 如果出现下图所示，说明成功了<br><img src="https://raw.githubusercontent.com/zongtmao/markdownPicture/master/images/git_ssh.png" alt="ssh"><br>打开博客根目录下的_config.yml文件，这是博客的配置文件，在这里你可以修改与博客相关的各种信息,修改最后一行的配置：<br>deploy:<br>  type: git<br>  repository: <a href="https://github.com/zongtmao/zongtai.github.io" target="_blank" rel="noopener">https://github.com/zongtmao/zongtai.github.io</a>  //自己的地址<br>  branch: master</p>
-<blockquote>
-<p>注意：type repository branch前面两个空格，后面一个，格式错误的话也是部署不成功！！</p>
+<hr>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><blockquote>
+<p>使用vue-cli脚手架搭建，根据vue不同版本安装即可，这里不多做介绍</p>
 </blockquote>
-<h2 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h2><p>首先在博客根目录下右键打开git bash，安装一个扩展npm i hexo-deployer-git。</p>
-<p>然后输入hexo new post “test”，新建一篇文章。</p>
-<p>然后打开D:\study\program\blog\source_posts的目录，可以发现下面多了一个文件夹和一个.md文件，一个用来存放你的图片等数据，另一个就是你的文章文件啦。</p>
-<p>编写完markdown文件后，根目录下输入hexo g生成静态网页，然后输入hexo s可以本地预览效果，最后输入hexo d上传到github上。这时打开你的github.io主页就能看到发布的文章啦</p>
-<h2 id="域名绑定"><a href="#域名绑定" class="headerlink" title="域名绑定"></a>域名绑定</h2><p>现在博客默认的域名还是xxx.github.io,首先你要有备案成功的域名，我已我的阿里云为例，如下图，添加两条解析记录<br><img src="https://raw.githubusercontent.com/zongtmao/markdownPicture/master/images/yuming.png" alt="域名解析"><br>然后打开你的github博客项目，点击settings，拉到下面Custom domain处，填上你自己的域名，保存<br><img src="https://raw.githubusercontent.com/zongtmao/markdownPicture/master/images/success.png" alt="域名绑定"></p>
-<h2 id="个性主题设置"><a href="#个性主题设置" class="headerlink" title="个性主题设置"></a>个性主题设置</h2><p>接下来，就是根据自己的喜好，设置自己喜欢的博客主题，本人已Next主题为例<br><a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">Next主题文档链接</a></p>
-<h3 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h3><p>git bash 到博客根目录，输入命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<p>此时themes文件夹下多了一个next文件夹：<br>F:\blog_manage\myBlog\themes\next<br>说明主题下载成功！</p>
-<h3 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h3><p>修改根目录下_config.yml文件，将theme改成next,重新启动可以看到效果</p>
-<p><img src="https://raw.githubusercontent.com/zongtmao/markdownPicture/master/images/theme_next.png" alt="NEXT"></p>
-<h3 id="主题设定"><a href="#主题设定" class="headerlink" title="主题设定"></a>主题设定</h3><p>定位到F:\blog_manage\myBlog\themes\next文件夹下，打开next文件夹下的_config.yml文件，关键词定位到Scheme，根据自己爱好修改下面的主题：<br><img src="https://raw.githubusercontent.com/zongtmao/markdownPicture/master/images/scheme.png" alt="主题"></p>
-<p>其他的个性化配置都可按文档类似配置，比如留言，搜索，标签，添加git入口之类的就不一一介绍了，看下最终的效果图吧：<br><img src="https://raw.githubusercontent.com/zongtmao/markdownPicture/master/images/my_blog.png" alt="博客"></p>
+<h1 id="vue2版本"><a href="#vue2版本" class="headerlink" title="vue2版本"></a>vue2版本</h1><ol>
+<li><h3 id="main-js里全局引入注册方式"><a href="#main-js里全局引入注册方式" class="headerlink" title="main.js里全局引入注册方式"></a>main.js里全局引入注册方式</h3><blockquote>
+<p> 我们想像element-ui那样，安装后在main.js里全局引入，项目中所有的组件中就都可以使用我们组件库中的组件，以封装VaButton和VaInput组件为例，如：</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//modules文件夹va-ui下存放组件</span><br><span class="line"></span><br><span class="line">import VaUI from &quot;../modules/va-ui&quot;</span><br><span class="line">import &quot;../modules/va-ui/common.css&quot;</span><br><span class="line"></span><br><span class="line">// 第二个参数为一个对象，我们可以将要使用的组件按需注册使用</span><br><span class="line">Vue.use(VaUI, &#123;</span><br><span class="line">  components: [</span><br><span class="line">    &quot;VaButton&quot;,</span><br><span class="line">    &quot;VaInput&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  render: h =&gt; h(App),</span><br><span class="line">&#125;).$mount(&apos;#app&apos;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如何实现上面这种，我们首先在va-ui文件夹下创建button跟input文件夹，分别在两个文件夹下开发组件,这里以最简单的button为例，里面的功能未完善，只是验证流程</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">va-ui/button/index.vue</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;button :class=&quot;[&apos;va-button&apos;, type]&quot;&gt;</span><br><span class="line">            &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        name: &quot;VaButton&quot;,</span><br><span class="line">        props: &#123;</span><br><span class="line">            type: String</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">.va-button &#123;</span><br><span class="line">    height: 32px;</span><br><span class="line">    padding: 0 15px;</span><br><span class="line">    &amp;.primary &#123;</span><br><span class="line">        color: #fff;</span><br><span class="line">        background-color: #409eff;</span><br><span class="line">        border-color: #409eff;</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;.warning &#123;</span><br><span class="line">        color: #fff;</span><br><span class="line">        background-color: #e6a23c;</span><br><span class="line">        border-color: #e6a23c;</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;.danger &#123;</span><br><span class="line">        color: #fff;</span><br><span class="line">        background-color: #f56c6c;</span><br><span class="line">        border-color: #f56c6c;</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;.success &#123;</span><br><span class="line">        color: #67c23a;</span><br><span class="line">        background: #f0f9eb;</span><br><span class="line">        border-color: #c2e7b0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li>在va-ui文件夹下创建index.ts</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">/modules/va-ui/index.ts</span><br><span class="line"></span><br><span class="line">//分别引入两个组件</span><br><span class="line">import Button from &quot;./button/index.vue&quot;</span><br><span class="line">import Input  from &apos;./input/index.vue&apos;</span><br><span class="line"></span><br><span class="line">//定义组件库对象，vue中插件实际上就是一个对象</span><br><span class="line">const VaUI: any = &#123;&#125;</span><br><span class="line"></span><br><span class="line">//定义所有组件的列表，循环注册</span><br><span class="line">const COMPONENTS: any = [</span><br><span class="line">    Button,</span><br><span class="line">    Input</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">//使用install方法注册，其中的options就是Vue.use时传的第二个参数，这时可以根据组件名按需注册</span><br><span class="line">VaUI.install = function(Vue: any, options: any) &#123;</span><br><span class="line">    if(options &amp;&amp; options.components) &#123;</span><br><span class="line">        const components = options.components;</span><br><span class="line">        components.forEach((componentName: any) =&gt; &#123;</span><br><span class="line">            COMPONENTS.forEach((component: any) =&gt; &#123;</span><br><span class="line">                if (componentName === component.name) &#123;</span><br><span class="line">                    Vue.component(component.name, component);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        COMPONENTS.forEach((component: any) =&gt; &#123;</span><br><span class="line">            Vue.component(component.name, component)</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//抛出VaUI对象</span><br><span class="line">export default VaUI;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>此时全局注册的方式已经实现了，我们在组件里就可以直接使用我们刚定义好的VaButton和VaInput组件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/src/app.vue</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;va-button type=&quot;primary&quot;&gt;我的按钮&lt;/va-button&gt;</span><br><span class="line">    &lt;va-input placeholder=&quot;enter you name&quot;&gt;&lt;/va-input&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>总结：主要是Vue.use以及install方法的使用，现在在我们创建的modules文件夹里直接引入的，后面开发完发布到npm，就可以安装使用，这只是很简单的实现，真正的组件库还涉及很多的知识，比如一些公共方法，混入，自定义指令等等，但思路是一样的</li>
+</ul>
+<hr>
+<ol start="2">
+<li>按解构的方式引入</li>
+</ol>
+<blockquote>
+<p>我们想要像element那样，通过解构的方式引入使用，组件库如何开发呢？</p>
+</blockquote>
+<ul>
+<li>main.js里解构使用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import &#123; VaButton, VaInput &#125; from &quot;../modules/va-ui&quot;</span><br><span class="line"></span><br><span class="line">//分别use</span><br><span class="line">Vue.use(VaButton)</span><br><span class="line">Vue.use(VaInput)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>此时index.ts写法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/modules/va-ui/index.ts</span><br><span class="line"></span><br><span class="line">import Button from &quot;./button/index.vue&quot;</span><br><span class="line">import Input  from &apos;./input/index.vue&apos;</span><br><span class="line"></span><br><span class="line">//分别定义组件对象</span><br><span class="line">const VaButton:any = &#123;&#125;;</span><br><span class="line">const VaInput:any = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">//分别install</span><br><span class="line">VaButton.install = (Vue: any) =&gt; Vue.component(Button.name, Button)</span><br><span class="line">VaInput.install = (Vue: any) =&gt; Vue.component(Input.name, Input)</span><br><span class="line"></span><br><span class="line">//最后导出即可</span><br><span class="line">export &#123;</span><br><span class="line">    VaButton,</span><br><span class="line">    VaInput</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>后续开发组件库可以兼容这两种不同的写法，使用者根据需要安装引入</li>
+</ul>
+<h1 id="vue3版本"><a href="#vue3版本" class="headerlink" title="vue3版本"></a>vue3版本</h1><blockquote>
+<p>vue3版本开发组件库跟vue2开发组件库的思路是一样的，只不过Vue3的写法跟Vue2版本有所区别，主要是组件开发时的写法，以VaSelect组件为例，附上代码</p>
+</blockquote>
+<ul>
+<li><p>main.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 全局引入</span><br><span class="line">import VaUI from &quot;../modules/va-ui&quot;</span><br><span class="line"></span><br><span class="line">const app = createApp(App);</span><br><span class="line"></span><br><span class="line">app.use(VaUI)</span><br><span class="line">app.mount(&apos;#app&apos;)</span><br><span class="line"></span><br><span class="line">//解构引入</span><br><span class="line">import &#123; VaSelect &#125; from &quot;../modules/va-ui&quot;</span><br><span class="line"></span><br><span class="line">const app = createApp(App);</span><br><span class="line"></span><br><span class="line">app.use(VaSelect)</span><br><span class="line">app.mount(&apos;#app&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>/modules/va-ui/select/index.js</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import Select from &quot;./select/index.vue&quot;</span><br><span class="line"></span><br><span class="line">const COMPONENTS = [</span><br><span class="line">    Select</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">//全局注册</span><br><span class="line">const VaUI = &#123;&#125;</span><br><span class="line"></span><br><span class="line">VaUI.install = function(Vue) &#123;</span><br><span class="line">    COMPONENTS.forEach(component =&gt; &#123;</span><br><span class="line">        Vue.component(component.name, component)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default VaUI</span><br><span class="line"></span><br><span class="line">//解构注册</span><br><span class="line">const VaSelect = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">export VaSelect.install = (Vue) =&gt; Vue.component(Select.name, Select);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>/modules/va-ui/select/index.vue</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;my-select&quot;&gt;</span><br><span class="line">        &lt;div </span><br><span class="line">            class=&quot;result&quot;</span><br><span class="line">            @click=&quot;openOption&quot;  </span><br><span class="line">        &gt;</span><br><span class="line">            &#123;&#123;data[curIdx].label&#125;&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;options&quot; v-show=&quot;optionsShow&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;option&quot;</span><br><span class="line">                v-for=&quot;(item, index) of data&quot;</span><br><span class="line">                :key=&quot;index&quot;</span><br><span class="line">                @click=&quot;setOptions(index, item)&quot;</span><br><span class="line">            &gt;</span><br><span class="line">            &#123;&#123;item.label&#125;&#125;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    import &#123; reactive, toRefs &#125; from &apos;vue&apos;</span><br><span class="line">    </span><br><span class="line">    export default &#123;</span><br><span class="line">        name: &quot;VaSelect&quot;,</span><br><span class="line">        props: &#123;</span><br><span class="line">            data: Array,</span><br><span class="line">            currentIndex: &#123;</span><br><span class="line">                type: Number,</span><br><span class="line">                default: 0</span><br><span class="line">            &#125;,</span><br><span class="line">            callback: Function</span><br><span class="line">        &#125;,</span><br><span class="line">        setup(props) &#123;</span><br><span class="line">            //定义响应式数据</span><br><span class="line">            const state  = reactive(&#123;</span><br><span class="line">                curIdx: props.currentIndex,</span><br><span class="line">                optionsShow: false</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">            const openOption = () =&gt; &#123;</span><br><span class="line">                state.optionsShow = true;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            const setOptions = (index, item) =&gt; &#123;</span><br><span class="line">                state.curIdx = index;</span><br><span class="line">                state.optionsShow = false;</span><br><span class="line">                props.callback(index, item);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            return &#123;</span><br><span class="line">                ...toRefs(state),</span><br><span class="line">                openOption,</span><br><span class="line">                setOptions</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>app.vue引入使用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;va-select</span><br><span class="line">    :data=&quot;data&quot;</span><br><span class="line">    :currentId=&quot;currentId&quot;</span><br><span class="line">    :callback=&quot;selectedOption&quot;</span><br><span class="line">  &gt;</span><br><span class="line">  &lt;/va-select&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; ref &#125; from &apos;vue&apos;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &apos;App&apos;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const data = [</span><br><span class="line">      &#123;</span><br><span class="line">        id: 1,</span><br><span class="line">        value: &quot;select1&quot;,</span><br><span class="line">        label: &quot;选择1&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        id: 2,</span><br><span class="line">        value: &quot;select2&quot;,</span><br><span class="line">        label: &quot;选择2&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    ];</span><br><span class="line">    </span><br><span class="line">    const currentId = ref(1);</span><br><span class="line"></span><br><span class="line">    const selectedOption = (index, item) =&gt; &#123;</span><br><span class="line">      console.log(index, item);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">      data,</span><br><span class="line">      currentId,</span><br><span class="line">      selectedOption</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h2>
       
     </div>
     
@@ -489,11 +515,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/vue/" rel="tag">@ vue</a>
+          
             <a href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">@ 分享</a>
           
             <a href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">@ 总结</a>
-          
-            <a href="/tags/hexo/" rel="tag">@ hexo</a>
           
         </div>
       
@@ -506,14 +532,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/hexo-git%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="next" title="hexo + git博客搭建">
+                <i class="fa fa-chevron-left"></i> hexo + git博客搭建
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/vue%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/" rel="prev" title="vue组件库开发流程">
-                vue组件库开发流程 <i class="fa fa-chevron-right"></i>
+              <a href="/TypeScript/" rel="prev" title="TypeScript">
+                TypeScript <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -709,7 +739,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-Github-博客搭建"><span class="nav-number">1.</span> <span class="nav-text">hexo + Github 博客搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">#前言#</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js"><span class="nav-number">1.2.</span> <span class="nav-text">Node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git安装"><span class="nav-number">1.3.</span> <span class="nav-text">Git安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hexo"><span class="nav-number">1.4.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-ssh配置"><span class="nav-number">1.5.</span> <span class="nav-text">Git ssh配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布文章"><span class="nav-number">1.6.</span> <span class="nav-text">发布文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名绑定"><span class="nav-number">1.7.</span> <span class="nav-text">域名绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个性主题设置"><span class="nav-number">1.8.</span> <span class="nav-text">个性主题设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载主题"><span class="nav-number">1.8.1.</span> <span class="nav-text">下载主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启用主题"><span class="nav-number">1.8.2.</span> <span class="nav-text">启用主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主题设定"><span class="nav-number">1.8.3.</span> <span class="nav-text">主题设定</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境搭建"><span class="nav-number">2.</span> <span class="nav-text">环境搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue2版本"><span class="nav-number">3.</span> <span class="nav-text">vue2版本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#main-js里全局引入注册方式"><span class="nav-number">3.0.1.</span> <span class="nav-text">main.js里全局引入注册方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue3版本"><span class="nav-number">4.</span> <span class="nav-text">vue3版本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#未完待续…"><span class="nav-number">4.1.</span> <span class="nav-text">未完待续…</span></a></li></ol></li></ol></div>
             
 
           </div>
