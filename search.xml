@@ -259,94 +259,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>vue组件库开发流程</title>
-    <url>/vue%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>目前项目中使用的是element-ui组件库，基本上能够满足日常的需求开发，但是在某些复杂交互的实现上，就需要自己重新封装（造轮子），如果时间允许可以根据项目开发一套我们自己的组件库，当然这个过程能够学到很多的知识点，下面以vue2版本和vue3版本为例，简单梳理下开发组件库的流程。</p>
-</blockquote>
-<hr>
-<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><blockquote>
-<p>使用vue-cli脚手架搭建，根据vue不同版本安装即可，这里不多做介绍</p>
-</blockquote>
-<h1 id="vue2版本"><a href="#vue2版本" class="headerlink" title="vue2版本"></a>vue2版本</h1><ol>
-<li><h3 id="main-js里全局引入注册方式"><a href="#main-js里全局引入注册方式" class="headerlink" title="main.js里全局引入注册方式"></a>main.js里全局引入注册方式</h3><blockquote>
-<p> 我们想像element-ui那样，安装后在main.js里全局引入，项目中所有的组件中就都可以使用我们组件库中的组件，以封装VaButton和VaInput组件为例，如：</p>
-</blockquote>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//modules文件夹va-ui下存放组件</span><br><span class="line"></span><br><span class="line">import VaUI from &quot;../modules/va-ui&quot;</span><br><span class="line">import &quot;../modules/va-ui/common.css&quot;</span><br><span class="line"></span><br><span class="line">// 第二个参数为一个对象，我们可以将要使用的组件按需注册使用</span><br><span class="line">Vue.use(VaUI, &#123;</span><br><span class="line">  components: [</span><br><span class="line">    &quot;VaButton&quot;,</span><br><span class="line">    &quot;VaInput&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  render: h =&gt; h(App),</span><br><span class="line">&#125;).$mount(&apos;#app&apos;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>如何实现上面这种，我们首先在va-ui文件夹下创建button跟input文件夹，分别在两个文件夹下开发组件,这里以最简单的button为例，里面的功能未完善，只是验证流程</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">va-ui/button/index.vue</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;button :class=&quot;[&apos;va-button&apos;, type]&quot;&gt;</span><br><span class="line">            &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        name: &quot;VaButton&quot;,</span><br><span class="line">        props: &#123;</span><br><span class="line">            type: String</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">.va-button &#123;</span><br><span class="line">    height: 32px;</span><br><span class="line">    padding: 0 15px;</span><br><span class="line">    &amp;.primary &#123;</span><br><span class="line">        color: #fff;</span><br><span class="line">        background-color: #409eff;</span><br><span class="line">        border-color: #409eff;</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;.warning &#123;</span><br><span class="line">        color: #fff;</span><br><span class="line">        background-color: #e6a23c;</span><br><span class="line">        border-color: #e6a23c;</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;.danger &#123;</span><br><span class="line">        color: #fff;</span><br><span class="line">        background-color: #f56c6c;</span><br><span class="line">        border-color: #f56c6c;</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;.success &#123;</span><br><span class="line">        color: #67c23a;</span><br><span class="line">        background: #f0f9eb;</span><br><span class="line">        border-color: #c2e7b0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在va-ui文件夹下创建index.ts</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/modules/va-ui/index.ts</span><br><span class="line"></span><br><span class="line">//分别引入两个组件</span><br><span class="line">import Button from &quot;./button/index.vue&quot;</span><br><span class="line">import Input  from &apos;./input/index.vue&apos;</span><br><span class="line"></span><br><span class="line">//定义组件库对象，vue中插件实际上就是一个对象</span><br><span class="line">const VaUI: any = &#123;&#125;</span><br><span class="line"></span><br><span class="line">//定义所有组件的列表，循环注册</span><br><span class="line">const COMPONENTS: any = [</span><br><span class="line">    Button,</span><br><span class="line">    Input</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">//使用install方法注册，其中的options就是Vue.use时传的第二个参数，这时可以根据组件名按需注册</span><br><span class="line">VaUI.install = function(Vue: any, options: any) &#123;</span><br><span class="line">    if(options &amp;&amp; options.components) &#123;</span><br><span class="line">        const components = options.components;</span><br><span class="line">        components.forEach((componentName: any) =&gt; &#123;</span><br><span class="line">            COMPONENTS.forEach((component: any) =&gt; &#123;</span><br><span class="line">                if (componentName === component.name) &#123;</span><br><span class="line">                    Vue.component(component.name, component);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        COMPONENTS.forEach((component: any) =&gt; &#123;</span><br><span class="line">            Vue.component(component.name, component)</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//抛出VaUI对象</span><br><span class="line">export default VaUI;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>此时全局注册的方式已经实现了，我们在组件里就可以直接使用我们刚定义好的VaButton和VaInput组件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/src/app.vue</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;va-button type=&quot;primary&quot;&gt;我的按钮&lt;/va-button&gt;</span><br><span class="line">    &lt;va-input placeholder=&quot;enter you name&quot;&gt;&lt;/va-input&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>总结：主要是Vue.use以及install方法的使用，现在在我们创建的modules文件夹里直接引入的，后面开发完发布到npm，就可以安装使用，这只是很简单的实现，真正的组件库还涉及很多的知识，比如一些公共方法，混入，自定义指令等等，但思路是一样的</li>
-</ul>
-<hr>
-<ol start="2">
-<li>按解构的方式引入</li>
-</ol>
-<blockquote>
-<p>我们想要像element那样，通过解构的方式引入使用，组件库如何开发呢？</p>
-</blockquote>
-<ul>
-<li>main.js里解构使用</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import &#123; VaButton, VaInput &#125; from &quot;../modules/va-ui&quot;</span><br><span class="line"></span><br><span class="line">//分别use</span><br><span class="line">Vue.use(VaButton)</span><br><span class="line">Vue.use(VaInput)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>此时index.ts写法</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/modules/va-ui/index.ts</span><br><span class="line"></span><br><span class="line">import Button from &quot;./button/index.vue&quot;</span><br><span class="line">import Input  from &apos;./input/index.vue&apos;</span><br><span class="line"></span><br><span class="line">//分别定义组件对象</span><br><span class="line">const VaButton:any = &#123;&#125;;</span><br><span class="line">const VaInput:any = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">//分别install</span><br><span class="line">VaButton.install = (Vue: any) =&gt; Vue.component(Button.name, Button)</span><br><span class="line">VaInput.install = (Vue: any) =&gt; Vue.component(Input.name, Input)</span><br><span class="line"></span><br><span class="line">//最后导出即可</span><br><span class="line">export &#123;</span><br><span class="line">    VaButton,</span><br><span class="line">    VaInput</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>后续开发组件库可以兼容这两种不同的写法，使用者根据需要安装引入</li>
-</ul>
-<h1 id="vue3版本"><a href="#vue3版本" class="headerlink" title="vue3版本"></a>vue3版本</h1><blockquote>
-<p>vue3版本开发组件库跟vue2开发组件库的思路是一样的，只不过Vue3的写法跟Vue2版本有所区别，主要是组件开发时的写法，以VaSelect组件为例，附上代码</p>
-</blockquote>
-<ul>
-<li><p>main.js</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 全局引入</span><br><span class="line">import VaUI from &quot;../modules/va-ui&quot;</span><br><span class="line"></span><br><span class="line">const app = createApp(App);</span><br><span class="line"></span><br><span class="line">app.use(VaUI)</span><br><span class="line">app.mount(&apos;#app&apos;)</span><br><span class="line"></span><br><span class="line">//解构引入</span><br><span class="line">import &#123; VaSelect &#125; from &quot;../modules/va-ui&quot;</span><br><span class="line"></span><br><span class="line">const app = createApp(App);</span><br><span class="line"></span><br><span class="line">app.use(VaSelect)</span><br><span class="line">app.mount(&apos;#app&apos;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>/modules/va-ui/select/index.js</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import Select from &quot;./select/index.vue&quot;</span><br><span class="line"></span><br><span class="line">const COMPONENTS = [</span><br><span class="line">    Select</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">//全局注册</span><br><span class="line">const VaUI = &#123;&#125;</span><br><span class="line"></span><br><span class="line">VaUI.install = function(Vue) &#123;</span><br><span class="line">    COMPONENTS.forEach(component =&gt; &#123;</span><br><span class="line">        Vue.component(component.name, component)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default VaUI</span><br><span class="line"></span><br><span class="line">//解构注册</span><br><span class="line">const VaSelect = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">export VaSelect.install = (Vue) =&gt; Vue.component(Select.name, Select);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>/modules/va-ui/select/index.vue</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;my-select&quot;&gt;</span><br><span class="line">        &lt;div </span><br><span class="line">            class=&quot;result&quot;</span><br><span class="line">            @click=&quot;openOption&quot;  </span><br><span class="line">        &gt;</span><br><span class="line">            &#123;&#123;data[curIdx].label&#125;&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;options&quot; v-show=&quot;optionsShow&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;option&quot;</span><br><span class="line">                v-for=&quot;(item, index) of data&quot;</span><br><span class="line">                :key=&quot;index&quot;</span><br><span class="line">                @click=&quot;setOptions(index, item)&quot;</span><br><span class="line">            &gt;</span><br><span class="line">            &#123;&#123;item.label&#125;&#125;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    import &#123; reactive, toRefs &#125; from &apos;vue&apos;</span><br><span class="line">    </span><br><span class="line">    export default &#123;</span><br><span class="line">        name: &quot;VaSelect&quot;,</span><br><span class="line">        props: &#123;</span><br><span class="line">            data: Array,</span><br><span class="line">            currentIndex: &#123;</span><br><span class="line">                type: Number,</span><br><span class="line">                default: 0</span><br><span class="line">            &#125;,</span><br><span class="line">            callback: Function</span><br><span class="line">        &#125;,</span><br><span class="line">        setup(props) &#123;</span><br><span class="line">            //定义响应式数据</span><br><span class="line">            const state  = reactive(&#123;</span><br><span class="line">                curIdx: props.currentIndex,</span><br><span class="line">                optionsShow: false</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">            const openOption = () =&gt; &#123;</span><br><span class="line">                state.optionsShow = true;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            const setOptions = (index, item) =&gt; &#123;</span><br><span class="line">                state.curIdx = index;</span><br><span class="line">                state.optionsShow = false;</span><br><span class="line">                props.callback(index, item);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            return &#123;</span><br><span class="line">                ...toRefs(state),</span><br><span class="line">                openOption,</span><br><span class="line">                setOptions</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>app.vue引入使用</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;va-select</span><br><span class="line">    :data=&quot;data&quot;</span><br><span class="line">    :currentId=&quot;currentId&quot;</span><br><span class="line">    :callback=&quot;selectedOption&quot;</span><br><span class="line">  &gt;</span><br><span class="line">  &lt;/va-select&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; ref &#125; from &apos;vue&apos;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &apos;App&apos;,</span><br><span class="line">  setup() &#123;</span><br><span class="line">    const data = [</span><br><span class="line">      &#123;</span><br><span class="line">        id: 1,</span><br><span class="line">        value: &quot;select1&quot;,</span><br><span class="line">        label: &quot;选择1&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        id: 2,</span><br><span class="line">        value: &quot;select2&quot;,</span><br><span class="line">        label: &quot;选择2&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    ];</span><br><span class="line">    </span><br><span class="line">    const currentId = ref(1);</span><br><span class="line"></span><br><span class="line">    const selectedOption = (index, item) =&gt; &#123;</span><br><span class="line">      console.log(index, item);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return &#123;</span><br><span class="line">      data,</span><br><span class="line">      currentId,</span><br><span class="line">      selectedOption</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h2>]]></content>
-      <categories>
-        <category>博客</category>
-      </categories>
-      <tags>
-        <tag>vue</tag>
-        <tag>分享</tag>
-        <tag>总结</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo + git博客搭建</title>
     <url>/hexo-git%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<h1 id="hexo-Github-博客搭建"><a href="#hexo-Github-博客搭建" class="headerlink" title="hexo + Github 博客搭建"></a>hexo + Github 博客搭建</h1><h2 id="前言"><a href="#前言" class="headerlink" title="#前言#"></a>#前言#</h2><pre><code>17年开始做前端的时候搭建了自己的第一个git博客，当时只是简单的玩了下，域名也没有申请备案，这也算为自己的懒惰找个借口吧，再没有花精力弄过，现在域名备案成功！想从新搭建下博客，网上也有一堆详细教程。我在此稍稍总结一下具体的搭建步骤，并且修改博客源码的一些坑和经验分享给大家，希望有所帮助！！废话不多说，开始正题~</code></pre><p>首先是搭建博客用到的框架，我选用基于node.js 的Hexo，可以直接用Markdown语法撰写博客，写好部署到git上就行</p>
@@ -390,9 +302,9 @@
         <category>博客</category>
       </categories>
       <tags>
+        <tag>hexo</tag>
         <tag>分享</tag>
         <tag>总结</tag>
-        <tag>hexo</tag>
       </tags>
   </entry>
 </search>
