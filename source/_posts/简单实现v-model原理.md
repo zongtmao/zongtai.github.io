@@ -20,7 +20,7 @@ categories: 博客
                 <p>年龄：<span>{{age}}</span></p>
             </p>
         </div>
-        <button id="btn">设置姓名为zongtmao并操作dom</button>
+        <button id="btn">设置姓名为zongtmao并不操作dom</button>
     </div>
 
 ```
